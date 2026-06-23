@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Anirudh Surabi — Portfolio</title>
+<meta name="description" content="Anirudh Surabi is a May 2026 MS Computer Science graduate focused on machine learning engineering, computer vision, deep learning, and high-performance computing."/>
+<meta name="author" content="Anirudh Surabi"/>
+<meta name="keywords" content="Anirudh Surabi, machine learning engineer, computer vision, deep learning, CUDA, portfolio, Loyola University Chicago"/>
+<meta property="og:title" content="Anirudh Surabi - Portfolio"/>
+<meta property="og:description" content="Machine learning and computer vision portfolio featuring deep learning, CUDA, and research-backed AI projects."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://asurabi26.github.io/"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Anirudh Surabi - Portfolio"/>
+<meta name="twitter:description" content="MS Computer Science graduate specializing in ML engineering, computer vision, and high-performance computing."/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --green: #1A6B3A;
+    --green-light: #2d8f52;
+    --green-pale: #eaf4ee;
+    --green-mid: #c6e8d1;
+    --green-dark: #0f4224;
+    --black: #0e1a13;
+    --gray: #4a5a51;
+    --gray-light: #8a9e92;
+    --bg: #f7faf8;
+    --white: #ffffff;
+    --border: #d4e6da;
+    --card-bg: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(247,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem; color: var(--green);
+    text-decoration: none; letter-spacing: 0.01em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500; color: var(--gray);
+    text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+  .nav-resume {
+    color: var(--green) !important;
+    border: 1px solid var(--green-mid);
+    background: var(--green-pale);
+    padding: 0.45rem 0.8rem;
+    border-radius: 0.375rem;
+  }
+  .nav-resume:hover { background: var(--green-mid); }
+  .nav-toggle {
+    display: none;
+    width: 42px; height: 42px;
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    background: var(--white);
+    cursor: pointer;
+    align-items: center; justify-content: center;
+    flex-direction: column; gap: 5px;
+  }
+  .nav-toggle span {
+    width: 18px; height: 2px;
+    background: var(--green);
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 7rem 3rem 4rem;
+    gap: 4rem;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .hero-text { }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; color: var(--green);
+    background: var(--green-pale);
+    border: 1px solid var(--green-mid);
+    padding: 0.3rem 0.8rem; border-radius: 2rem;
+    margin-bottom: 1.5rem; letter-spacing: 0.05em;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.05; color: var(--black);
+    margin-bottom: 1rem;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--green);
+  }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--gray);
+    line-height: 1.7; max-width: 480px;
+    margin-bottom: 2rem;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--green); color: #fff;
+    padding: 0.75rem 1.5rem; border-radius: 0.375rem;
+    font-weight: 500; font-size: 0.9rem;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1.5px solid var(--green); color: var(--green);
+    padding: 0.75rem 1.5rem; border-radius: 0.375rem;
+    font-weight: 500; font-size: 0.9rem;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .btn-secondary:hover { background: var(--green-pale); }
+
+  .hero-visual {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.5rem 1.25rem;
+    position: relative; overflow: hidden;
+  }
+  .stat-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: var(--green);
+  }
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem; color: var(--green);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.8rem; color: var(--gray-light);
+    margin-top: 0.4rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .stat-card.accent {
+    background: var(--green);
+  }
+  .stat-card.accent::before { background: rgba(255,255,255,0.3); }
+  .stat-card.accent .stat-number { color: #fff; }
+  .stat-card.accent .stat-label { color: rgba(255,255,255,0.7); }
+
+  .hero-bio {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 0.75rem; padding: 1.25rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--green); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .bio-text { }
+  .bio-name { font-weight: 600; font-size: 0.95rem; }
+  .bio-role { font-size: 0.8rem; color: var(--gray-light); margin-top: 0.15rem; }
+  .bio-links { display: flex; gap: 1rem; margin-top: 0.5rem; }
+  .bio-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; color: var(--green);
+    text-decoration: none;
+  }
+  .bio-links a:hover { text-decoration: underline; }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 3rem; max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; color: var(--green);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--black); line-height: 1.15;
+    margin-bottom: 3rem;
+  }
+  .section-title em { font-style: italic; color: var(--green); }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid; grid-template-columns: 3fr 2fr; gap: 4rem; align-items: start;
+  }
+  .about-text p {
+    font-size: 1rem; line-height: 1.8; color: var(--gray);
+    margin-bottom: 1.25rem;
+  }
+  .about-text p strong { color: var(--black); font-weight: 600; }
+  .skills-block { }
+  .skills-block h3 {
+    font-size: 0.8rem; font-weight: 600; color: var(--gray-light);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 0.75rem; margin-top: 1.5rem;
+  }
+  .skills-block h3:first-child { margin-top: 0; }
+  .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; color: var(--green-dark);
+    background: var(--green-pale);
+    border: 1px solid var(--green-mid);
+    padding: 0.25rem 0.6rem; border-radius: 0.25rem;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-timeline { position: relative; padding-left: 2rem; }
+  .exp-timeline::before {
+    content: ''; position: absolute;
+    left: 0; top: 0.6rem; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .exp-item {
+    position: relative; margin-bottom: 3rem;
+  }
+  .exp-dot {
+    position: absolute; left: -2.35rem; top: 0.35rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--green); border: 2px solid var(--bg);
+  }
+  .exp-meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.25rem;
+  }
+  .exp-role { font-weight: 600; font-size: 1.05rem; color: var(--black); }
+  .exp-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; color: var(--gray-light);
+  }
+  .exp-org { font-size: 0.9rem; color: var(--green); margin-bottom: 0.75rem; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: 0.9rem; color: var(--gray); line-height: 1.7;
+    padding-left: 1rem; position: relative; margin-bottom: 0.35rem;
+  }
+  .exp-bullets li::before {
+    content: '▸'; position: absolute; left: 0;
+    color: var(--green); font-size: 0.7rem; top: 0.3rem;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .project-card:hover {
+    border-color: var(--green);
+    transform: translateY(-3px);
+  }
+  .project-header {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; margin-bottom: 0.75rem;
+  }
+  .project-icon {
+    width: 40px; height: 40px; border-radius: 0.5rem;
+    background: var(--green-pale); border: 1px solid var(--green-mid);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .project-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; color: var(--green);
+    background: var(--green-pale); border: 1px solid var(--green-mid);
+    padding: 0.2rem 0.5rem; border-radius: 2rem;
+    font-weight: 500;
+  }
+  .project-title {
+    font-weight: 600; font-size: 1rem;
+    color: var(--black); margin-bottom: 0.5rem;
+  }
+  .project-desc {
+    font-size: 0.875rem; color: var(--gray);
+    line-height: 1.6; flex: 1; margin-bottom: 1rem;
+  }
+  .project-metric {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; color: var(--green);
+    background: var(--green-pale);
+    padding: 0.4rem 0.75rem; border-radius: 0.25rem;
+    display: inline-block; margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .stack-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; color: var(--gray);
+    border: 1px solid var(--border);
+    padding: 0.15rem 0.5rem; border-radius: 0.25rem;
+  }
+
+  /* ── EDUCATION ── */
+  .education-grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .education-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .education-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.5rem;
+  }
+  .education-degree {
+    font-weight: 600; color: var(--black);
+    font-size: 1.05rem;
+  }
+  .education-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; color: var(--gray-light);
+  }
+  .education-school { color: var(--green); font-size: 0.9rem; }
+  .education-note {
+    color: var(--gray); line-height: 1.7;
+    font-size: 0.9rem;
+  }
+  .coursework {
+    display: flex; flex-wrap: wrap; gap: 0.35rem;
+    margin-top: 0.25rem;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .cert-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .cert-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 0.75rem; padding: 1.25rem;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    transition: border-color 0.2s;
+  }
+  .cert-card:hover { border-color: var(--green); }
+  .cert-icon {
+    width: 36px; height: 36px; border-radius: 0.5rem;
+    background: var(--green); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .cert-name { font-weight: 600; font-size: 0.875rem; color: var(--black); }
+  .cert-issuer { font-size: 0.78rem; color: var(--gray-light); margin-top: 0.2rem; }
+
+  /* ── CONTACT ── */
+  .contact-box {
+    background: var(--green);
+    border-radius: 1rem;
+    padding: 4rem 3rem;
+    text-align: center;
+    color: #fff;
+  }
+  .contact-box h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem; margin-bottom: 1rem;
+  }
+  .contact-box p {
+    font-size: 1rem; opacity: 0.85; max-width: 500px;
+    margin: 0 auto 2rem; line-height: 1.7;
+  }
+  .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff; padding: 0.65rem 1.25rem;
+    border-radius: 0.375rem; text-decoration: none;
+    font-size: 0.875rem; font-weight: 500;
+    transition: background 0.2s;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.25); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center; padding: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; color: var(--gray-light);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none; border-top: 1px solid var(--border);
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-text { animation: fadeUp 0.7s ease both; }
+  .hero-visual { animation: fadeUp 0.7s 0.15s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-toggle { display: inline-flex; }
+    .nav-links {
+      position: absolute;
+      top: calc(100% + 1px); left: 1rem; right: 1rem;
+      display: none; flex-direction: column; gap: 0;
+      background: rgba(255,255,255,0.98);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 0.5rem;
+      box-shadow: 0 16px 40px rgba(14,26,19,0.12);
+    }
+    .nav-links.is-open { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links a {
+      display: block;
+      padding: 0.85rem 0.9rem;
+      border-radius: 0.5rem;
+    }
+    .nav-links a:hover { background: var(--green-pale); }
+    .nav-resume { text-align: center; margin-top: 0.25rem; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 2.5rem; }
+    section { padding: 3rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .education-grid { grid-template-columns: 1fr; }
+    .contact-box { padding: 2.5rem 1.5rem; }
+    .contact-box h2 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Anirudh Surabi</a>
+  <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" id="primary-navigation">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a class="nav-resume" href="public/Anirudh_Surabi_Resume%20.pdf" target="_blank" rel="noopener">Resume</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <span class="hero-tag">Open to Work · May 2026 Graduate</span>
+    <h1>Building <em>intelligent</em> systems that actually work.</h1>
+    <p class="hero-sub">
+      MS Computer Science graduate specializing in deep learning, computer vision, and high-performance computing. Research-backed. Deployment-proven.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#projects">View Projects →</a>
+      <a class="btn-secondary" href="https://mail.google.com/mail/?view=cm&fs=1&to=surabianirudh17@gmail.com" target="_blank" rel="noopener noreferrer">Get In Touch</a>
+      <a class="btn-secondary" href="public/Anirudh_Surabi_Resume%20.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="stat-grid">
+      <div class="stat-card accent">
+        <div class="stat-number">139×</div>
+        <div class="stat-label">GPU Speedup · CUDA</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">97%</div>
+        <div class="stat-label">Peak Model Accuracy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">7</div>
+        <div class="stat-label">Projects Deployed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">8</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+    </div>
+    <div class="hero-bio">
+      <div class="avatar">AS</div>
+      <div class="bio-text">
+        <div class="bio-name">Anirudh Surabi</div>
+        <div class="bio-role">MS CS · Loyola University Chicago · 2026</div>
+        <div class="bio-links">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=surabianirudh17@gmail.com" target="_blank" rel="noopener noreferrer">✉ Email</a>
+          <a href="https://linkedin.com/in/anirudhsurabi" target="_blank">in LinkedIn</a>
+          <a href="https://github.com/asurabi26" target="_blank">⌥ GitHub</a>
+        </div>
+      </div>
+    </div>  
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">// about me</div>
+  <div class="section-title">Deep learning engineer with a <em>research edge.</em></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a <strong>May 2026 MS Computer Science graduate</strong> from Loyola University Chicago, where I spent the past year as a Graduate Research Assistant building deep learning systems for synthetic medical imaging — work advancing toward peer-reviewed publication.
+      </p>
+      <p>
+        My technical depth spans CNN architectures, generative models (Pix2Pix), parallel computing (CUDA, OpenMP), and full-stack deployment. I've built systems that run at <strong>95%+ accuracy in real-world conditions</strong> — on construction sites, in vehicles, in clinical datasets — not just in notebooks.
+      </p>
+      <p>
+        Before my master's, I completed a <strong>B.Tech in Information Technology</strong> from Gokaraju Rangaraju Institute of Engineering and Technology (India, 2023), where I built the foundation in CNNs and computer vision that drives my work today.
+      </p>
+      <p>
+        I'm actively seeking roles in <strong>ML Engineering, Software Engineering, or AI Research</strong> where I can bring both research rigor and practical deployment experience to real problems.
+      </p>
+    </div>
+    <div class="skills-block">
+      <h3>ML / AI</h3>
+      <div class="tag-cloud">
+        <span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">PyTorch</span><span class="tag">Scikit-learn</span><span class="tag">OpenCV</span><span class="tag">CNNs</span><span class="tag">Transfer Learning</span><span class="tag">Pix2Pix</span><span class="tag">U-Net</span><span class="tag">HDBSCAN</span><span class="tag">TF-IDF</span>
+      </div>
+      <h3>Models</h3>
+      <div class="tag-cloud">
+        <span class="tag">ResNet50</span><span class="tag">DenseNet201</span><span class="tag">VGG16</span><span class="tag">AlexNet</span>
+      </div>
+      <h3>HPC</h3>
+      <div class="tag-cloud">
+        <span class="tag">CUDA</span><span class="tag">OpenMP</span><span class="tag">GPU Computing</span><span class="tag">HPC</span>
+      </div>
+      <h3>Web & Databases</h3>
+      <div class="tag-cloud">
+        <span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag">ORM</span>
+      </div>
+      <h3>Languages & Tools</h3>
+      <div class="tag-cloud">
+        <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Git</span><span class="tag">Linux</span><span class="tag">VS Code</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">// education</div>
+  <div class="section-title">Academic training with a <em>technical core.</em></div>
+  <div class="education-grid">
+    <div class="education-card">
+      <div class="education-meta">
+        <div class="education-degree">M.S. Computer Science</div>
+        <div class="education-date">Expected May 2026</div>
+      </div>
+      <div class="education-school">Loyola University Chicago · Chicago, IL</div>
+      <p class="education-note">
+        Graduate study focused on deep learning, computer vision, high-performance computing, and applied AI research.
+      </p>
+      <div class="coursework">
+        <span class="stack-tag">Deep Learning</span><span class="stack-tag">Computer Vision</span><span class="stack-tag">CUDA</span><span class="stack-tag">Research</span>
+      </div>
+    </div>
+
+    <div class="education-card">
+      <div class="education-meta">
+        <div class="education-degree">B.Tech Information Technology</div>
+        <div class="education-date">2023</div>
+      </div>
+      <div class="education-school">Gokaraju Rangaraju Institute of Engineering and Technology · India</div>
+      <p class="education-note">
+        Built a strong foundation in software engineering, databases, machine learning fundamentals, and computer vision projects.
+      </p>
+      <div class="coursework">
+        <span class="stack-tag">Software Engineering</span><span class="stack-tag">Databases</span><span class="stack-tag">Machine Learning</span><span class="stack-tag">Python</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">// experience</div>
+  <div class="section-title">Where I've <em>built</em> things.</div>
+  <div class="exp-timeline">
+
+    <div class="exp-item">
+      <div class="exp-dot"></div>
+      <div class="exp-meta">
+        <span class="exp-role">Graduate Research Assistant</span>
+        <span class="exp-date">March 2025 – August 2025</span>
+      </div>
+      <div class="exp-org">Loyola University Chicago · Chicago, IL</div>
+      <ul class="exp-bullets">
+        <li>Led a research project evaluating physician-rated quality of synthetic medical images, developing robust experimental workflows advancing toward peer-reviewed publication.</li>
+        <li>Designed and trained CNN classification models (AlexNet, ResNet50, DenseNet201, VGG16) on a remote Linux server to accurately classify physician-assigned image quality scores.</li>
+        <li>Built and validated a Pix2Pix image-to-image translation pipeline generating high-fidelity synthetic medical images from clinical datasets, expanding training data for downstream models.</li>
+        <li>Improved model robustness through fine-tuning, data augmentation, and regularization (Dropout, L2), achieving measurable reductions in overfitting across all experimental stages.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-dot"></div>
+      <div class="exp-meta">
+        <span class="exp-role">Machine Learning Intern</span>
+        <span class="exp-date">March 2022 – April 2022</span>
+      </div>
+      <div class="exp-org">Rinex Technology · Remote</div>
+      <ul class="exp-bullets">
+        <li>Completed a focused ML certification program covering supervised and unsupervised learning algorithms, model evaluation techniques, and practical ML workflows.</li>
+        <li>Gained hands-on experience applying core ML concepts through structured exercises, building a foundation in predictive modeling and data-driven problem solving.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">// projects</div>
+  <div class="section-title">Things I've <em>shipped.</em></div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">⚡</div>
+        <span class="project-badge">HPC</span>
+      </div>
+      <div class="project-title">Parallelizing Conway's Game of Life</div>
+      <div class="project-metric">139× GPU speedup · 13.57× CPU speedup</div>
+      <div class="project-desc">Implemented serial, OpenMP-parallelized, and CUDA GPU-accelerated versions benchmarked across 268M-cell grids. Analyzed memory bandwidth bottlenecks and superlinear cache-effect scaling on NVIDIA RTX 5070 Ti.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">NumPy</span><span class="stack-tag">CUDA</span><span class="stack-tag">OpenMP</span><span class="stack-tag">HPC</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🧠</div>
+        <span class="project-badge">Medical AI</span>
+      </div>
+      <div class="project-title">Brain Tumor Detection — Deep Learning</div>
+      <div class="project-metric">85%+ test accuracy</div>
+      <div class="project-desc">Built transfer learning pipelines for binary and multi-class MRI brain tumor classification using ResNet50, DenseNet201, and VGG16 architectures through systematic data augmentation and hyperparameter tuning.</div>
+      <div class="project-stack">
+        <span class="stack-tag">TensorFlow</span><span class="stack-tag">Keras</span><span class="stack-tag">ResNet50</span><span class="stack-tag">DenseNet201</span><span class="stack-tag">VGG16</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🚗</div>
+        <span class="project-badge">Computer Vision</span>
+      </div>
+      <div class="project-title">Real-Time Pothole Detection System</div>
+      <div class="project-metric">95% accuracy · sub-100ms latency · 3% FPR</div>
+      <div class="project-desc">CNN-based real-time detection system integrated into vehicle navigation, validated through extensive field testing under varied lighting and road conditions.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">TensorFlow</span><span class="stack-tag">CNNs</span><span class="stack-tag">OpenCV</span><span class="stack-tag">Embedded</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🏗️</div>
+        <span class="project-badge">Object Detection</span>
+      </div>
+      <div class="project-title">Scene Understanding in Construction Sites</div>
+      <div class="project-metric">97% accuracy · 90% average precision</div>
+      <div class="project-desc">Deep learning model deployed on live construction sites for detecting materials in real-time. Built a worker-facing UI that reduced material inventory tracking errors measurably.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">TensorFlow</span><span class="stack-tag">CNNs</span><span class="stack-tag">Computer Vision</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">📊</div>
+        <span class="project-badge">Data Science</span>
+      </div>
+      <div class="project-title">Job Market Clustering & Ghost Job Detection</div>
+      <div class="project-metric">HDBSCAN + association rule mining</div>
+      <div class="project-desc">Applied clustering and association rule mining to LinkedIn job data to surface skill demand patterns and identify ghost postings. Built an interactive dashboard evaluated with silhouette score and lift metrics.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">Scikit-learn</span><span class="stack-tag">HDBSCAN</span><span class="stack-tag">KMeans</span><span class="stack-tag">TF-IDF</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🗄️</div>
+        <span class="project-badge">Database</span>
+      </div>
+      <div class="project-title">Restaurant Management System</div>
+      <div class="project-metric">Normalized relational DB · end-to-end ORM</div>
+      <div class="project-desc">Designed a normalized relational database with referential integrity constraints. Implemented complex SQL queries and validated ORM models for Restaurant, Customer, and Feedback entities.</div>
+      <div class="project-stack">
+        <span class="stack-tag">PostgreSQL</span><span class="stack-tag">SQLAlchemy</span><span class="stack-tag">Python</span><span class="stack-tag">ORM</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🎮</div>
+        <span class="project-badge">Frontend</span>
+      </div>
+      <div class="project-title">Gamified Productivity Tracker</div>
+      <div class="project-metric">React · animated · fully deployed</div>
+      <div class="project-desc">React task tracker with animated progress bars and badge-unlock mechanics. Led UI debugging, form validation logic, and end-to-end GitHub collaboration and deployment.</div>
+      <div class="project-stack">
+        <span class="stack-tag">React</span><span class="stack-tag">JavaScript</span><span class="stack-tag">Framer Motion</span><span class="stack-tag">Material UI</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">// certifications & training</div>
+  <div class="section-title">Credentials that <em>count.</em></div>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-icon">🐍</div>
+      <div>
+        <div class="cert-name">Python Programming Certification</div>
+        <div class="cert-issuer">HackerRank</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🤖</div>
+      <div>
+        <div class="cert-name">Machine Learning Certification</div>
+        <div class="cert-issuer">Rinex Technology</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📐</div>
+      <div>
+        <div class="cert-name">Python Computing Course</div>
+        <div class="cert-issuer">NPTEL / IIT</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🧬</div>
+      <div>
+        <div class="cert-name">Artificial Intelligence Training</div>
+        <div class="cert-issuer">Oracle Academy</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📈</div>
+      <div>
+        <div class="cert-name">Machine Learning Session</div>
+        <div class="cert-issuer">Cognizance, IIT Roorkee</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">⚙️</div>
+      <div>
+        <div class="cert-name">DevOps Workshop</div>
+        <div class="cert-issuer">IIT Varanasi</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📱</div>
+      <div>
+        <div class="cert-name">MIT App Design Workshop</div>
+        <div class="cert-issuer">IETE</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🖥️</div>
+      <div>
+        <div class="cert-name">User-Centric Computing for HCI</div>
+        <div class="cert-issuer">Human-Computer Interaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CONTACT -->
+<section id="contact" style="padding-bottom: 5rem;">
+  <div class="contact-box">
+    <h2>Let's build something together.</h2>
+    <p>I'm actively looking for entry-level ML Engineering, Software Engineering, and AI Research roles. If you're working on something interesting, I'd love to hear about it.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=surabianirudh17@gmail.com" target="_blank" rel="noopener noreferrer">✉ surabianirudh17@gmail.com</a>
+      <a class="contact-link" href="https://linkedin.com/in/anirudhsurabi" target="_blank">in LinkedIn</a>
+      <a class="contact-link" href="https://github.com/asurabi26" target="_blank">⌥ GitHub</a>
+      <a class="contact-link" href="tel:7732005225">📞 (773) 200-5225</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built by Anirudh Surabi · Chicago, IL · 2026
+</footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+    navLinks.classList.toggle('is-open', !isOpen);
+  });
+
+  navLinks.addEventListener('click', (event) => {
+    if (event.target.tagName !== 'A') return;
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Open navigation menu');
+    navLinks.classList.remove('is-open');
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open navigation menu');
+      navLinks.classList.remove('is-open');
+    }
+  });
+</script>
+
+</body>
+</html>
